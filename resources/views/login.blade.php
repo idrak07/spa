@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 
@@ -53,7 +52,7 @@
     <link href="/css/app.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="home-background">
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="container-fluid">
@@ -68,7 +67,7 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active mx-1 p-2" aria-current="page" href="#">Home</a>
+                        <a class="nav-link mx-1 p-2" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link mx-1 p-2" href="#">About Us</a>
@@ -92,45 +91,51 @@
                     </li>
                     @endif
 
+
                 </ul>
             </div>
         </div>
     </nav>
 
     <main class="container">
-        <div class="row mt-5">
-            <div class="col-8 offset-1">
-                @if(count($appointments) < 1)
-                @else
-                <h2 class="text-dark text-left">Book your appointment</h2>
-                @endif
-            </div>
-            <div class="col-2">
-                <a class="text-right text-dark" href="/"><i class="fa fa-light fa-arrow-up"></i><span>Change date</span></a>
-            </div>
-            <div class="col-10 offset-1">
-                <div class="row">
-                    @if(count($appointments) < 1)
-                        <div>
-                            <h1 class="text-light text-center mt-5"><span>No slot found</span> <i class="fa fa-frown"></i></h1>
-                        </div>
-                    @else
-                        @foreach ($appointments as $appointment)
-                            <div class="col-12 col-md-4">
-                                <div class="row my-2 bg-light rounded mx-1">
-                                    <div class="col-8 py-4">
-                                        <h4 class="appointment-time">{{ \Carbon\Carbon::parse($appointment->start_time)->format('h:i A')}}- {{ \Carbon\Carbon::parse($appointment->end_time)->format('h:i A') }}</h4>
-                                    </div>
-                                    <div class="col-4 py-4 ">
-                                        <a href="/book/{{$appointment->id}}" type="button" class="btn btn-sm btn-success float-right">Book</a>
+        <div class="row">
+            <div class="col-6 offset-3">
+                <div class="bg-light p-5 rounded">
+                    <div class="my-2">
+                        <h3 class="text-center">Login</h3>
+                    </div>
+                    <div class="my-2">
+                        <form class="needs-validation" method="POST" action="/login" novalidate>
+                            @csrf
+                            <div class="col-12 col-md-8 offset-md-2">
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Enter email" required>
+                                    <div class="invalid-feedback">
+                                        Please enter email address
                                     </div>
                                 </div>
+                                <div class="form-group mt-3">
+                                    <label for="password">Password</label>
+                                    <input type="password" class="form-control form-control" name="password" placeholder="Enter password"
+                                            id="password" required>
+                                    <div class="invalid-feedback">
+                                        Please enter valid password
+                                    </div>
+                                </div>
+                                @if(session()->has('loginError'))
+                                <div class="form-group">
+                                    <small class="text-danger"> {{session()->get('loginError')}}</small>
+                                </div>
+                                @endif
+                                <div class="mt-3">
+                                    <button type="submit" class="btn btn-success btn-sm">SIgn in</button>
+                                    <a href="/forget-password" class="text-primary">Forgot password?</a>
+                                </div>
                             </div>
-                        @endforeach
-                    @endif
-
+                        </form>
+                    </div>
                 </div>
-
             </div>
         </div>
     </main>

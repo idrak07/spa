@@ -75,9 +75,21 @@
                     <li class="nav-item">
                         <a class="nav-link mx-1 p-2" href="#">Contact Us</a>
                     </li>
+                    @if(session()->has('id'))
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="#">Login</a>
+                        <a class="nav-link mx-1 p-2" href="/profile">Profile</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link mx-1 p-2" href="/logout">Logout</a>
+                    </li>
+                    @else
+                    <li class="nav-item">
+                        <a class="nav-link mx-1 p-2" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mx-1 p-2" href="/register">Register</a>
+                    </li>
+                    @endif
 
                 </ul>
             </div>
@@ -85,6 +97,17 @@
     </nav>
 
     <main class="container">
+        <div class="row">
+            <div class="col-8 offset-2">
+                @if (session()->has('booked_msg'))
+                <div class="alert alert-success" role="alert" id="bookingAlert">
+                    {{session()->get('booked_msg')}}
+                </div>
+                @else
+
+                @endif
+            </div>
+        </div>
         <div class="row">
             <div class="col-8 offset-2">
                 <div class="bg-light p-5 rounded">
@@ -112,26 +135,6 @@
                 </div>
             </div>
         </div>
-
-        <div class="row mt-5">
-            <div class="col-12">
-                <h1 class="text-light text-center">Book your appointment</h1>
-            </div>
-            <div class="col-10 offset-1">
-
-                @for($i = 0; $i < 10; $i++)
-                    <div class="row my-2 bg-light rounded">
-                        <div class="col-6 py-4">
-                            <h2>{{ 9 +$i }}: 00 - {{ 10+$i }}: 00</h2>
-                        </div>
-                        <div class="col-6 py-4 ">
-                            <button type="button" class="btn btn-success float-right">Book</button>
-                        </div>
-                    </div>
-                @endfor
-
-            </div>
-        </div>
     </main>
 
     <script>
@@ -141,6 +144,9 @@
                 locale: 'en',
                 minDate: (new Date()).toString()
             });
+            setTimeout(function() {
+                $('#bookingAlert').fadeOut('fast');
+            }, 3000);
         });
     </script>
 
