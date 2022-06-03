@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -13,15 +14,28 @@ class LoginController extends Controller
     }
 
     public function login(Request $request) {
-        $user = User::where('email', $request->email)->where('password', $request->password)->first();
+        $user = User::where('email', $request->email)->first();
         if($user != null) {
-            $request->session()->put('user_id', $user->id);
-            return redirect('/');
+            if(Hash::check($request->password, $user->password)) {
+                $request->session()->put('user_id', $user->id);
+                $request->session()->put('role', $user->role);
+                if($user->role == 'ADMIN') {
+                    // return "admin";
+                    return redirect('/admin');
+                } else {
+                    return "user";
+                }
+            } else {
+                $request->session()->forget('user_id');
+                $request->session()->flash('loginError', 'invalid email or password!');
+                return redirect('/login');
+            }
         } else {
-            $request->session()->forget('id');
+            $request->session()->forget('user_id');
             $request->session()->flash('loginError', 'invalid email or password!');
             return redirect('/login');
         }
+        // return $user;
     }
 
     public function logout(Request $request) {
@@ -54,6 +68,17 @@ class LoginController extends Controller
         else {
             $request->session()->flash('signUpError', 'Email already in use');
             return redirect('/register');
+        }
+    }
+
+    public function getProfile(Request $request) {
+        $user = User::find($request->session()->get('user_id'));
+        if($user != null) {
+            return view('profile', ['user' => $user]);
+        } else {
+            $request->session()->forget('id');
+            $request->session()->flash('loginError', 'invalid email or password!');
+            return redirect('/login');
         }
     }
 }

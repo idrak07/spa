@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,4 +25,6 @@ Route::get('/logout', [LoginController::class, 'logout']);
 Route::post('/login', [LoginController::class, 'login']);
 Route::get('/register', [LoginController::class, 'getRegister']);
 Route::post('/register', [LoginController::class, 'register']);
+Route::get('/profile', [LoginController::class, 'getProfile']);
+Route::get('/admin', [AdminController::class, 'home']);
 

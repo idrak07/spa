@@ -68,15 +68,15 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active mx-1 p-2" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active mx-1 p-2" aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="#">About Us</a>
+                        <a class="nav-link mx-1 p-2" href="/">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="#">Contact Us</a>
+                        <a class="nav-link mx-1 p-2" href="/">Contact Us</a>
                     </li>
-                    @if(session()->has('id'))
+                    @if(session()->has('user_id'))
                     <li class="nav-item">
                         <a class="nav-link mx-1 p-2" href="/profile">Profile</a>
                     </li>

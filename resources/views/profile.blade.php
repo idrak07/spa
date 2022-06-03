@@ -102,17 +102,17 @@
             <div class="col-8 offset-2">
                 <div class="bg-light p-5 rounded">
                     <div class="my-3">
-                        <h3 class="text-center">Signup</h3>
+                        <h3 class="text-center">Profile</h3>
                     </div>
                     <div class="my-2">
-                        <form class="needs-validation" method="POST" action="/register" novalidate>
+                        <form class="needs-validation" method="POST" action="/profile" novalidate>
                             @csrf
                             <div class="col-12 col-md-8 offset-md-2">
                                 <div class="row my-2">
                                     <div class="col-12 col-sm-6">
                                         <div class="form-group">
                                             <label for="firstName">First name</label>
-                                            <input type="text" class="form-control" name="firstName" id="firstName" aria-describedby="firstName" placeholder="Enter first name" required>
+                                            <input type="text" class="form-control" name="firstName" id="firstName" aria-describedby="firstName" placeholder="Enter first name" value="{{$user->first_name}}" required>
                                             <div class="invalid-feedback">
                                                 Please enter your first name
                                             </div>
@@ -121,7 +121,7 @@
                                     <div class="col-12 col-sm-6">
                                         <div class="form-group">
                                             <label for="lastName">Last name</label>
-                                            <input type="text" class="form-control" name="lastName" placeholder="Enter last name"
+                                            <input type="text" class="form-control" name="lastName" value="{{$user->last_name}}" placeholder="Enter last name"
                                                     id="lastName" required>
                                             <div class="invalid-feedback">
                                                 Please enter your last name
@@ -130,10 +130,10 @@
                                     </div>
                                 </div>
                                 <div class="row my-2">
-                                    <div class="col-12 col-sm-12">
+                                    <div class="col-12">
                                         <div class="form-group">
                                             <label for="email">Email</label>
-                                            <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Enter email" required>
+                                            <input type="email" class="form-control" name="email" value="{{$user->email}}" id="email" aria-describedby="emailHelp" placeholder="Enter email" required>
                                             <div class="invalid-feedback">
                                                 Please enter email address
                                             </div>
@@ -141,20 +141,10 @@
                                     </div>
                                 </div>
                                 <div class="row my-2">
-                                    <div class="col-12 col-sm-6">
-                                        <div class="form-group">
-                                            <label for="password">Password</label>
-                                            <input type="password" class="form-control" name="password" placeholder="Enter password"
-                                                    id="password" required>
-                                            <div class="invalid-feedback">
-                                                Please enter valid password
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-6">
+                                    <div class="col-12">
                                         <div class="form-group">
                                             <label for="gender">Gender</label>
-                                            <select class="form-control" name="gender" id="Gender" required>
+                                            <select class="form-control" value="{{$user->gender}}" name="gender" id="Gender" required>
                                                 <option selected disabled value="">Choose...</option>
                                                 <option value="MALE">Male</option>
                                                 <option value="FEMALE">Female</option>
@@ -171,7 +161,7 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="address">Address</label>
-                                            <input type="text" class="form-control" name="address" placeholder="Enter address"
+                                            <input type="text" value="{{$user->address}}" class="form-control" name="address" placeholder="Enter address"
                                                     id="address" required>
                                             <div class="invalid-feedback">
                                                 Please enter address
@@ -183,7 +173,7 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="phone">Contact number</label>
-                                            <input type="text" class="form-control" name="phone" placeholder="Enter phone number"
+                                            <input type="text" value="{{$user->phone}}" class="form-control" name="phone" placeholder="Enter phone number"
                                                     id="phone" required>
                                             <div class="invalid-feedback">
                                                 Please enter contact number
@@ -197,7 +187,7 @@
                                 </div>
                                 @endif
                                 <div class="mt-3">
-                                    <button type="submit" class="btn btn-primary btn-sm px-5">Register</button>
+                                    <button type="submit" class="btn btn-primary btn-sm px-5">Save</button>
                                 </div>
                             </div>
                         </form>
