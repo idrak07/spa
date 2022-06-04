@@ -68,10 +68,10 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active mx-1 p-2" aria-current="page" href="/">Heim</a>
+                        <a class="nav-link active mx-1 p-2" aria-current="page" href="http://welltimeprivatespa.de/uber-uns/">Heim</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="/">Über uns</a>
+                        <a class="nav-link mx-1 p-2" href="http://welltimeprivatespa.de/kontaktiere-uns/">Über uns</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link mx-1 p-2" href="/">Contact Us</a>

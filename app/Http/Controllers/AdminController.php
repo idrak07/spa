@@ -34,12 +34,16 @@ class AdminController extends Controller
     }
 
     public function postslot(Request $request) {
-        return Appointment::create([
+        $res = Appointment::create([
             'appointment_date' => $request->date,
             'start_time' => $request->startTime,
             'end_time' => $request->endTime,
 
         ]);
+
+        if($res){
+            return $this->home();
+        }
     }
 
     public function getAppointment(Request $req)

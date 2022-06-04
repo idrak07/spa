@@ -285,7 +285,7 @@
                                     </div>
                                 </div>
                                 <div class="col-12 pt-5">
-                                    <input type="submit" value="Get appointment" class="btn btn-primary">
+                                    <input type="submit" value="Termin bekommen" class="btn btn-primary">
                                 </div>
                             </div>
 

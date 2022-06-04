@@ -71,10 +71,10 @@
                         <a class="nav-link active mx-1 p-2" aria-current="page" href="/">Heim</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="/">Über uns</a>
+                        <a class="nav-link mx-1 p-2" href="http://welltimeprivatespa.de/uber-uns/">Über uns</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="/">Kontaktiere uns</a>
+                        <a class="nav-link mx-1 p-2" href="http://welltimeprivatespa.de/kontaktiere-uns/">Kontaktiere uns</a>
                     </li>
                     @if(session()->has('user_id'))
                     <li class="nav-item">
