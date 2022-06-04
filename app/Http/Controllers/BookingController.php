@@ -12,12 +12,12 @@ class BookingController extends Controller
         if ($request->session()->has('user_id')) {
             $booking = Booking::create([
                 'user_id' => $request->session()->get('user_id'),
-                'appointment_id' =>  $id
+                'appointment_id' =>  $id,
+                'status' => 'REQUESTED'
             ]);
-            $request->session()->flash('booked_msg', 'Reservation complete!');
+            $request->session()->flash('booked_msg', 'Reservation requested!');
             return redirect('/');
         } else {
-            $request->session()->put('booking_onway', $id);
             return redirect('/login');
         }
     }

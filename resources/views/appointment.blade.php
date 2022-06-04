@@ -78,6 +78,9 @@
                     </li>
                     @if(session()->has('user_id'))
                     <li class="nav-item">
+                        <a class="nav-link mx-1 p-2" href="/my-appointment">My appointments</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link mx-1 p-2" href="/profile">Profile</a>
                     </li>
                     <li class="nav-item">

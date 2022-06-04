@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 
@@ -52,7 +53,7 @@
     <link href="/css/app.css" rel="stylesheet">
 </head>
 
-<body class="home-background">
+<body>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="container-fluid">
@@ -100,42 +101,37 @@
     </nav>
 
     <main class="container">
-        <div class="row">
-            <div class="col-8 offset-2">
-                @if (session()->has('booked_msg'))
-                <div class="alert alert-success" role="alert" id="bookingAlert">
-                    {{session()->get('booked_msg')}}
-                </div>
+        <div class="row mt-5">
+            <div class="col-8 offset-1">
+                @if(count($appointments) < 1)
                 @else
-
+                <h2 class="text-dark text-left">Book your appointment</h2>
                 @endif
             </div>
-        </div>
-        <div class="row">
-            <div class="col-8 offset-2">
-                <div class="bg-light p-5 rounded">
-                    <div class="my-2">
-                        <h2>Select date here </h2>
-                    </div>
-                    <div class="my-2">
-                        <form class="needs-validation" method="POST" action="/appointment" novalidate>
-                            @csrf
-                            <div class="row">
-                                <div class="col-10">
-                                    <input type="date" class="form-control form-control-lg" name="date"
-                                        id="appointment_date" required>
-                                    <div class="invalid-feedback">
-                                        Please provide a date
+            <div class="col-10 offset-1">
+                <div class="row">
+                    @if(count($appointments) < 1)
+                        <div>
+                            <h1 class="text-light text-center mt-5"><span>No slot found</span> <i class="fa fa-frown"></i></h1>
+                        </div>
+                    @else
+                        @foreach ($appointments as $appointment)
+                            <div class="col-12">
+                                <div class="row my-2 bg-light rounded mx-1">
+                                    <div class="col-8 py-4">
+                                        <h4>{{$appointment->appointment_date}}</h4>
+                                        <p class="appointment-time">{{ \Carbon\Carbon::parse($appointment->start_time)->format('h:i A')}}- {{ \Carbon\Carbon::parse($appointment->end_time)->format('h:i A') }}</p>
+                                    </div>
+                                    <div class="col-4 py-4 text-right">
+                                        <p class="text-right">{{$appointment->status}}</p>
                                     </div>
                                 </div>
-                                <div class="col-12 pt-5">
-                                    <input type="submit" value="Get appointment" class="btn btn-primary">
-                                </div>
                             </div>
+                        @endforeach
+                    @endif
 
-                        </form>
-                    </div>
                 </div>
+
             </div>
         </div>
     </main>
@@ -147,9 +143,6 @@
                 locale: 'en',
                 minDate: (new Date()).toString()
             });
-            setTimeout(function() {
-                $('#bookingAlert').fadeOut('fast');
-            }, 3000);
         });
     </script>
 

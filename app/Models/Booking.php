@@ -11,6 +11,7 @@ class Booking extends Model
 
     protected $fillable = [
         'user_id',
-        'appointment_id'
+        'appointment_id',
+        'status'
     ];
 }

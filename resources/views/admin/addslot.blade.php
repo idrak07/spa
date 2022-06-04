@@ -45,6 +45,155 @@
             -moz-user-select: none;
             user-select: none;
         }
+
+        .row{
+    margin-left:0px;
+    margin-right:0px;
+}
+
+#wrapper {
+    padding-left: 70px;
+    transition: all .4s ease 0s;
+    height: 100%;
+    margin-top: 55px;
+}
+
+#sidebar-wrapper {
+    margin-left: -150px;
+    left: 30px;
+    width: 200px;
+    background: #222;
+    position: fixed;
+    height: 100%;
+    z-index: 10000;
+    transition: all .4s ease 0s;
+}
+
+.sidebar-nav {
+    display: block;
+    float: left;
+    width: 150px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+#page-content-wrapper {
+    padding-left: 0;
+    margin-left: 0;
+    width: 100%;
+    height: auto;
+}
+#wrapper.active {
+    padding-left: 220px;
+}
+#wrapper.active #sidebar-wrapper {
+    left: 150px;
+}
+
+#page-content-wrapper {
+  width: 100%;
+}
+
+#sidebar_menu li a, .sidebar-nav li a {
+    color: #999;
+    display: block;
+    float: left;
+    text-decoration: none;
+    width: 200px;
+    background: #252525;
+    border-top: 1px solid #373737;
+    border-bottom: 1px solid #1A1A1A;
+    -webkit-transition: background .5s;
+    -moz-transition: background .5s;
+    -o-transition: background .5s;
+    -ms-transition: background .5s;
+    transition: background .5s;
+}
+.sidebar_name {
+    padding-top: 25px;
+    color: #fff;
+    opacity: .7;
+}
+
+.sidebar-nav li {
+  line-height: 40px;
+  text-indent: 20px;
+}
+
+.sidebar-nav li a {
+  color: #999999;
+  display: block;
+  text-decoration: none;
+}
+
+.sidebar-nav li a:hover {
+  color: #fff;
+  background: rgba(255,255,255,0.2);
+  text-decoration: none;
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+  text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+  height: 65px;
+  line-height: 60px;
+  font-size: 18px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+  color: #999999;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+  color: #fff;
+  background: none;
+}
+
+#main_icon
+{
+    float:right;
+   padding-right: 35px;
+   padding-top:20px;
+}
+.sub_icon
+{
+    float:right;
+   padding-right: 35px;
+   padding-top:10px;
+}
+.content-header {
+  height: 65px;
+  line-height: 65px;
+}
+
+.content-header h1 {
+  margin: 0;
+  margin-left: 20px;
+  line-height: 65px;
+  display: inline-block;
+}
+
+@media (max-width:767px) {
+    #wrapper {
+    padding-left: 70px;
+    transition: all .4s ease 0s;
+}
+#sidebar-wrapper {
+    left: 70px;
+}
+#wrapper.active {
+    padding-left: 150px;
+}
+#wrapper.active #sidebar-wrapper {
+    left: 150px;
+    width: 150px;
+    transition: all .4s ease 0s;
+}
+}
+
     </style>
 
 
@@ -67,130 +216,97 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" aria-current="page" href="/">Home</a>
+                        <a class="nav-link mx-1 p-2" aria-current="page" href="/admin">Home</a>
                     </li>
+
+                    @if(session()->has('user_id'))
+                    <li class="nav-item">
+                        <a class="nav-link active mx-1 p-2" href="/admin/addslot">Add Slot</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link mx-1 p-2" href="/admin/manage-schedule">Manage Schedule</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mx-1 p-2" href="/admin/history">History</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mx-1 p-2" href="/logout">Logout</a>
+                    </li>
+
+                    @else
                     <li class="nav-item">
                         <a class="nav-link mx-1 p-2" href="/">About Us</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link mx-1 p-2" href="/">Contact Us</a>
                     </li>
-                    @if(session()->has('user_id'))
-                    <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="/my-appointment">My appointments</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active mx-1 p-2" href="/profile">Profile</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="/logout">Logout</a>
-                    </li>
-                    @else
                     <li class="nav-item">
                         <a class="nav-link mx-1 p-2" href="/login">Login</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link mx-1 p-2" href="/register">Register</a>
                     </li>
-                    @endif
 
+                    @endif
 
                 </ul>
             </div>
         </div>
     </nav>
-
     <main class="container">
         <div class="row">
             <div class="col-8 offset-2">
                 <div class="bg-light p-5 rounded">
                     <div class="my-3">
-                        <h3 class="text-center">Profile</h3>
+                        <h3 class="text-center">Add Slot</h3>
                     </div>
                     <div class="my-2">
-                        <form class="needs-validation" method="POST" action="/profile" novalidate>
+                        <form class="needs-validation" method="POST" action="/admin/addslot" novalidate>
                             @csrf
                             <div class="col-12 col-md-8 offset-md-2">
                                 <div class="row my-2">
-                                    <div class="col-12 col-sm-6">
+                                    <div class="col-12 col-sm-12">
                                         <div class="form-group">
-                                            <label for="firstName">First name</label>
-                                            <input type="text" class="form-control" name="firstName" id="firstName" aria-describedby="firstName" placeholder="Enter first name" value="{{$user->first_name}}" required>
+                                            <label for="date">Date</label>
+                                            <input type="date" class="form-control form-control-lg" name="date"
+                                        id="appointment_date" required>
                                             <div class="invalid-feedback">
-                                                Please enter your first name
+                                                Please enter Date
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-6">
                                         <div class="form-group">
-                                            <label for="lastName">Last name</label>
-                                            <input type="text" class="form-control" name="lastName" value="{{$user->last_name}}" placeholder="Enter last name"
-                                                    id="lastName" required>
+                                            <label for="startTime">Start Time</label>
+                                            <div class="input-group date" id="timePicker">
+                                                <input type="time" class="form-control timePicker" name="startTime">
+                                              </div>
                                             <div class="invalid-feedback">
-                                                Please enter your last name
+                                                Please enter start time
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row my-2">
-                                    <div class="col-12">
+                                    <div class="col-12 col-sm-6">
                                         <div class="form-group">
-                                            <label for="email">Email</label>
-                                            <input type="email" class="form-control" name="email" value="{{$user->email}}" id="email" aria-describedby="emailHelp" placeholder="Enter email" required>
+                                            <label for="endTime">End Time</label>
+                                            <div class="input-group date" id="timePicker">
+                                                <input type="time" class="form-control timePicker" name="endTime">
+                                              </div>
                                             <div class="invalid-feedback">
-                                                Please enter email address
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row my-2">
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <label for="gender">Gender</label>
-                                            <select class="form-control" value="{{$user->gender}}" name="gender" id="Gender" required>
-                                                <option selected disabled value="">Choose...</option>
-                                                <option value="MALE">Male</option>
-                                                <option value="FEMALE">Female</option>
-                                                <option value="OTHER">Others</option>
-                                              </select>
-                                            <div class="invalid-feedback">
-                                                Please select gender
+                                                Please enter end time
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="row my-2">
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <label for="address">Address</label>
-                                            <input type="text" value="{{$user->address}}" class="form-control" name="address" placeholder="Enter address"
-                                                    id="address" required>
-                                            <div class="invalid-feedback">
-                                                Please enter address
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row my-2">
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <label for="phone">Contact number</label>
-                                            <input type="text" value="{{$user->phone}}" class="form-control" name="phone" placeholder="Enter phone number"
-                                                    id="phone" required>
-                                            <div class="invalid-feedback">
-                                                Please enter contact number
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                                 @if(session()->has('signUpError'))
                                 <div class="form-group">
                                     <small class="text-danger"> {{session()->get('signUpError')}}</small>
                                 </div>
                                 @endif
                                 <div class="mt-3">
-                                    <button type="submit" class="btn btn-primary btn-sm px-5">Save</button>
+                                    <button type="submit" class="btn btn-primary btn-sm px-5">Add Slot</button>
                                 </div>
                             </div>
                         </form>
@@ -200,36 +316,42 @@
         </div>
     </main>
 
-    <script>
-        jQuery.fn.ForceNumericOnly =
-            function()
-            {
-                return this.each(function()
-                {
-                    $(this).keydown(function(e)
-                    {
-                        var key = e.charCode || e.keyCode || 0;
-                        // allow backspace, tab, delete, enter, arrows, numbers and keypad numbers ONLY
-                        // home, end, period, and numpad decimal
-                        return (
-                            key == 8 ||
-                            key == 9 ||
-                            key == 13 ||
-                            key == 46 ||
-                            key == 110 ||
-                            key == 190 ||
-                            (key >= 35 && key <= 40) ||
-                            (key >= 48 && key <= 57) ||
-                            (key >= 96 && key <= 105));
-                    });
-                });
-            };
-    </script>
+
 
     <script>
-        $(document).ready(function () {
-            $("#phone").ForceNumericOnly();
+        $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("active");
         });
+        $(document).ready(function () {
+            $('.appointment_date').datetimepicker({
+                format: 'MM/DD/YYYY',
+                locale: 'en',
+                minDate: (new Date()).toString()
+            });
+            setTimeout(function() {
+                $('#bookingAlert').fadeOut('fast');
+            }, 3000);
+
+            var firstOpen = true;
+            var time;
+
+            $('#timePicker').datetimepicker({
+                useCurrent: false,
+                format: "hh:mm A"
+                }).on('dp.show', function() {
+                if(firstOpen) {
+                    time = moment().startOf('day');
+                    firstOpen = false;
+                } else {
+                    time = "01:00 PM"
+                }
+
+            $(this).data('DateTimePicker').date(time);
+            });
+        });
+
+
     </script>
 
     <script>

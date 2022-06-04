@@ -26,5 +26,18 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::get('/register', [LoginController::class, 'getRegister']);
 Route::post('/register', [LoginController::class, 'register']);
 Route::get('/profile', [LoginController::class, 'getProfile']);
-Route::get('/admin', [AdminController::class, 'home']);
+Route::get('//my-appointment', [HomeController::class, 'getMyAppointment']);
+
+Route::middleware(['isAdmin'])->group(function () {
+    Route::get('/admin', [AdminController::class, 'home']);
+    Route::get('/admin/manage-schedule', [AdminController::class, 'manageSchedule']);
+    Route::post('/admin/manage-schedule', [AdminController::class, 'getAppointment']);
+    Route::get('/admin/history', [AdminController::class, 'history']);
+    Route::get('/admin/reservation/{id}', [AdminController::class, 'showReservations']);
+
+    Route::get('/admin/addslot', [AdminController::class, 'addslot']);
+    Route::post('/admin/addslot', [AdminController::class, 'postslot']);
+    Route::get('/admin/reservation/{reservationId}/confirm/{userId}', [AdminController::class, 'confirmBooking']);
+});
+
 

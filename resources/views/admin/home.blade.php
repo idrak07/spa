@@ -45,6 +45,155 @@
             -moz-user-select: none;
             user-select: none;
         }
+
+        .row{
+    margin-left:0px;
+    margin-right:0px;
+}
+
+#wrapper {
+    padding-left: 70px;
+    transition: all .4s ease 0s;
+    height: 100%;
+    margin-top: 55px;
+}
+
+#sidebar-wrapper {
+    margin-left: -150px;
+    left: 30px;
+    width: 200px;
+    background: #222;
+    position: fixed;
+    height: 100%;
+    z-index: 10000;
+    transition: all .4s ease 0s;
+}
+
+.sidebar-nav {
+    display: block;
+    float: left;
+    width: 150px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+#page-content-wrapper {
+    padding-left: 0;
+    margin-left: 0;
+    width: 100%;
+    height: auto;
+}
+#wrapper.active {
+    padding-left: 220px;
+}
+#wrapper.active #sidebar-wrapper {
+    left: 150px;
+}
+
+#page-content-wrapper {
+  width: 100%;
+}
+
+#sidebar_menu li a, .sidebar-nav li a {
+    color: #999;
+    display: block;
+    float: left;
+    text-decoration: none;
+    width: 200px;
+    background: #252525;
+    border-top: 1px solid #373737;
+    border-bottom: 1px solid #1A1A1A;
+    -webkit-transition: background .5s;
+    -moz-transition: background .5s;
+    -o-transition: background .5s;
+    -ms-transition: background .5s;
+    transition: background .5s;
+}
+.sidebar_name {
+    padding-top: 25px;
+    color: #fff;
+    opacity: .7;
+}
+
+.sidebar-nav li {
+  line-height: 40px;
+  text-indent: 20px;
+}
+
+.sidebar-nav li a {
+  color: #999999;
+  display: block;
+  text-decoration: none;
+}
+
+.sidebar-nav li a:hover {
+  color: #fff;
+  background: rgba(255,255,255,0.2);
+  text-decoration: none;
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+  text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+  height: 65px;
+  line-height: 60px;
+  font-size: 18px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+  color: #999999;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+  color: #fff;
+  background: none;
+}
+
+#main_icon
+{
+    float:right;
+   padding-right: 35px;
+   padding-top:20px;
+}
+.sub_icon
+{
+    float:right;
+   padding-right: 35px;
+   padding-top:10px;
+}
+.content-header {
+  height: 65px;
+  line-height: 65px;
+}
+
+.content-header h1 {
+  margin: 0;
+  margin-left: 20px;
+  line-height: 65px;
+  display: inline-block;
+}
+
+@media (max-width:767px) {
+    #wrapper {
+    padding-left: 70px;
+    transition: all .4s ease 0s;
+}
+#sidebar-wrapper {
+    left: 70px;
+}
+#wrapper.active {
+    padding-left: 150px;
+}
+#wrapper.active #sidebar-wrapper {
+    left: 150px;
+    width: 150px;
+    transition: all .4s ease 0s;
+}
+}
+
     </style>
 
 
@@ -67,28 +216,39 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active mx-1 p-2" aria-current="page" href="/">Home</a>
+                        <a class="nav-link active mx-1 p-2" aria-current="page" href="/admin">Home</a>
                     </li>
+
+                    @if(session()->has('user_id'))
+
+                    <li class="nav-item">
+                        <a class="nav-link  mx-1 p-2" href="/admin/addslot">Add Slot</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link mx-1 p-2" href="/admin/manage-schedule">Manage Schedule</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mx-1 p-2" href="/admin/history">History</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mx-1 p-2" href="/logout">Logout</a>
+                    </li>
+
+                    @else
                     <li class="nav-item">
                         <a class="nav-link mx-1 p-2" href="/">About Us</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link mx-1 p-2" href="/">Contact Us</a>
                     </li>
-                    @if(session()->has('user_id'))
-                    <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="/profile">Profile</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="/logout">Logout</a>
-                    </li>
-                    @else
                     <li class="nav-item">
                         <a class="nav-link mx-1 p-2" href="/login">Login</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link mx-1 p-2" href="/register">Register</a>
                     </li>
+
                     @endif
 
                 </ul>
@@ -97,47 +257,50 @@
     </nav>
 
     <main class="container">
-        <div class="row">
-            <div class="col-8 offset-2">
-                @if (session()->has('booked_msg'))
-                <div class="alert alert-success" role="alert" id="bookingAlert">
-                    {{session()->get('booked_msg')}}
-                </div>
+        <div class="row mt-5">
+            <div class="col-8 offset-1">
+                @if(count($users) < 1)
                 @else
-
+                <h2 class="text-dark text-left">Today's appointment</h2>
                 @endif
             </div>
-        </div>
-        <div class="row">
-            <div class="col-8 offset-2">
-                <div class="bg-light p-5 rounded">
-                    <div class="my-2">
-                        <h2>Select date here </h2>
-                    </div>
-                    <div class="my-2">
-                        <form class="needs-validation" method="POST" action="/appointment" novalidate>
-                            @csrf
-                            <div class="row">
-                                <div class="col-10">
-                                    <input type="date" class="form-control form-control-lg" name="date"
-                                        id="appointment_date" required>
-                                    <div class="invalid-feedback">
-                                        Please provide a date
+            <div class="col-10 offset-1">
+                <div class="row">
+                    @if(count($users) < 1)
+                        <div>
+                            <h1 class="text-light text-center mt-5"><span>No reservation found</span> <i class="fa fa-frown"></i></h1>
+                        </div>
+                    @else
+                        @foreach ($users as $user)
+                            <div class="col-12 col-md-12">
+                                <div class="row my-2 bg-light rounded mx-1">
+                                    <div class="col-8 py-4">
+                                        <h5>{{ $user->first_name }} {{ $user->last_name}}</h5>
+                                        <p>{{$user->address}}</p>
+                                        <p>{{$user->phone}}</p>
+                                    </div>
+                                    <div class="col-4 py-4 ">
+                                        <p>{{ \Carbon\Carbon::parse($user->start_time)->format('h:i A')}}- {{ \Carbon\Carbon::parse($user->end_time)->format('h:i A') }}</p>
                                     </div>
                                 </div>
-                                <div class="col-12 pt-5">
-                                    <input type="submit" value="Get appointment" class="btn btn-primary">
-                                </div>
                             </div>
+                        @endforeach
+                    @endif
 
-                        </form>
-                    </div>
                 </div>
+
             </div>
         </div>
     </main>
 
+
+
+
     <script>
+        $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("active");
+});
         $(document).ready(function () {
             $('.appointment_date').datetimepicker({
                 format: 'MM/DD/YYYY',
