@@ -67,27 +67,27 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" aria-current="page" href="/">Home</a>
+                        <a class="nav-link mx-1 p-2" aria-current="page" href="/">Heim</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="/">About Us</a>
+                        <a class="nav-link mx-1 p-2" href="/">Über uns</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="/">Contact Us</a>
+                        <a class="nav-link mx-1 p-2" href="/">Kontaktiere uns</a>
                     </li>
                     @if(session()->has('user_id'))
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="/profile">Profile</a>
+                        <a class="nav-link mx-1 p-2" href="/profile">Profil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="/logout">Logout</a>
+                        <a class="nav-link mx-1 p-2" href="/logout">Ausloggen</a>
                     </li>
                     @else
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="/login">Login</a>
+                        <a class="nav-link mx-1 p-2" href="/login">Anmeldung</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="/register">Register</a>
+                        <a class="nav-link mx-1 p-2" href="/register">Registrieren</a>
                     </li>
                     @endif
 
@@ -102,7 +102,7 @@
             <div class="col-6 offset-3">
                 <div class="bg-light p-5 rounded">
                     <div class="my-2">
-                        <h3 class="text-center">Login</h3>
+                        <h3 class="text-center">Anmeldung</h3>
                     </div>
                     <div class="my-2">
                         <form class="needs-validation" method="POST" action="/login" novalidate>
@@ -112,15 +112,15 @@
                                     <label for="email">Email</label>
                                     <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Enter email" required>
                                     <div class="invalid-feedback">
-                                        Please enter email address
+                                        Bitte E-Mail-Adresse eingeben
                                     </div>
                                 </div>
                                 <div class="form-group mt-3">
-                                    <label for="password">Password</label>
+                                    <label for="password">Passwort</label>
                                     <input type="password" class="form-control form-control" name="password" placeholder="Enter password"
                                             id="password" required>
                                     <div class="invalid-feedback">
-                                        Please enter valid password
+                                        Bitte gültiges Passwort eingeben
                                     </div>
                                 </div>
                                 @if(session()->has('loginError'))
@@ -129,8 +129,8 @@
                                 </div>
                                 @endif
                                 <div class="mt-3">
-                                    <button type="submit" class="btn btn-success btn-sm">SIgn in</button>
-                                    <a href="/forget-password" class="text-primary">Forgot password?</a>
+                                    <button type="submit" class="btn btn-success btn-sm">Einloggen</button>
+                                    <a href="/forget-password" class="text-primary">Passwort vergessen?</a>
                                 </div>
                             </div>
                         </form>

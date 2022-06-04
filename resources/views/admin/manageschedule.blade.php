@@ -216,37 +216,37 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" aria-current="page" href="/admin">Home</a>
+                        <a class="nav-link mx-1 p-2" aria-current="page" href="/admin">Heim</a>
                     </li>
 
                     @if(session()->has('user_id'))
 
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="/admin/addslot">Add Slot</a>
+                        <a class="nav-link mx-1 p-2" href="/admin/addslot">Steckplatz hinzufügen</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active mx-1 p-2" href="/admin/manage-schedule">Manage Schedule</a>
+                        <a class="nav-link active mx-1 p-2" href="/admin/manage-schedule">Zeitplan verwalten</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="/admin/history">History</a>
+                        <a class="nav-link mx-1 p-2" href="/admin/history">Geschichte</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="/logout">Logout</a>
+                        <a class="nav-link mx-1 p-2" href="/logout">Ausloggen</a>
                     </li>
 
                     @else
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="/">About Us</a>
+                        <a class="nav-link mx-1 p-2" href="/">Über uns</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="/">Contact Us</a>
+                        <a class="nav-link mx-1 p-2" href="/">Kontaktiere uns</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="/login">Login</a>
+                        <a class="nav-link mx-1 p-2" href="/login">Anmeldung</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="/register">Register</a>
+                        <a class="nav-link mx-1 p-2" href="/register">Registrieren</a>
                     </li>
 
                     @endif
@@ -271,7 +271,7 @@
             <div class="col-8 offset-2">
                 <div class="bg-light p-5 rounded">
                     <div class="my-2">
-                        <h2>Select date here </h2>
+                        <h2>Wählen Sie hier das Datum aus </h2>
                     </div>
                     <div class="my-2">
                         <form class="needs-validation" method="POST" action="/admin/manage-schedule" novalidate>
@@ -281,7 +281,7 @@
                                     <input type="date" class="form-control form-control-lg" name="date"
                                         id="appointment_date" required>
                                     <div class="invalid-feedback">
-                                        Please provide a date
+                                        Bitte geben Sie ein Datum an
                                     </div>
                                 </div>
                                 <div class="col-12 pt-5">

@@ -68,30 +68,30 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active mx-1 p-2" aria-current="page" href="/">Home</a>
+                        <a class="nav-link active mx-1 p-2" aria-current="page" href="/">Heim</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="/">About Us</a>
+                        <a class="nav-link mx-1 p-2" href="/">Über uns</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link mx-1 p-2" href="/">Contact Us</a>
                     </li>
                     @if(session()->has('user_id'))
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="/my-appointment">My appointments</a>
+                        <a class="nav-link mx-1 p-2" href="/my-appointment">Meine Termine</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="/profile">Profile</a>
+                        <a class="nav-link mx-1 p-2" href="/profile">Profil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="/logout">Logout</a>
+                        <a class="nav-link mx-1 p-2" href="/logout">Ausloggen</a>
                     </li>
                     @else
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="/login">Login</a>
+                        <a class="nav-link mx-1 p-2" href="/login">Anmeldung</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="/register">Register</a>
+                        <a class="nav-link mx-1 p-2" href="/register">Registrieren</a>
                     </li>
                     @endif
 
@@ -105,14 +105,14 @@
             <div class="col-8 offset-1">
                 @if(count($appointments) < 1)
                 @else
-                <h2 class="text-dark text-left">Book your appointment</h2>
+                <h2 class="text-dark text-left">Buchen Sie Ihren Termin</h2>
                 @endif
             </div>
             <div class="col-10 offset-1">
                 <div class="row">
                     @if(count($appointments) < 1)
                         <div>
-                            <h1 class="text-light text-center mt-5"><span>No slot found</span> <i class="fa fa-frown"></i></h1>
+                            <h1 class="text-light text-center mt-5"><span>Kein Steckplatz gefunden</span> <i class="fa fa-frown"></i></h1>
                         </div>
                     @else
                         @foreach ($appointments as $appointment)

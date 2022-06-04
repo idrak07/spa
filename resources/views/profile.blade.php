@@ -67,30 +67,33 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" aria-current="page" href="/">Home</a>
+                        <a class="nav-link mx-1 p-2" aria-current="page" href="/">
+                            Heim</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="/">About Us</a>
+                        <a class="nav-link mx-1 p-2" href="/">
+                            Über uns</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="/">Contact Us</a>
+                        <a class="nav-link mx-1 p-2" href="/">Kontaktiere uns</a>
                     </li>
                     @if(session()->has('user_id'))
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="/my-appointment">My appointments</a>
+                        <a class="nav-link mx-1 p-2" href="/my-appointment">
+                            Meine Termine</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active mx-1 p-2" href="/profile">Profile</a>
+                        <a class="nav-link active mx-1 p-2" href="/profile">Profil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="/logout">Logout</a>
+                        <a class="nav-link mx-1 p-2" href="/logout">Ausloggen</a>
                     </li>
                     @else
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="/login">Login</a>
+                        <a class="nav-link mx-1 p-2" href="/login">Anmeldung</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="/register">Register</a>
+                        <a class="nav-link mx-1 p-2" href="/register">Registrieren</a>
                     </li>
                     @endif
 
@@ -105,7 +108,7 @@
             <div class="col-8 offset-2">
                 <div class="bg-light p-5 rounded">
                     <div class="my-3">
-                        <h3 class="text-center">Profile</h3>
+                        <h3 class="text-center">Profil</h3>
                     </div>
                     <div class="my-2">
                         <form class="needs-validation" method="POST" action="/profile" novalidate>
@@ -114,20 +117,20 @@
                                 <div class="row my-2">
                                     <div class="col-12 col-sm-6">
                                         <div class="form-group">
-                                            <label for="firstName">First name</label>
+                                            <label for="firstName">Vorname</label>
                                             <input type="text" class="form-control" name="firstName" id="firstName" aria-describedby="firstName" placeholder="Enter first name" value="{{$user->first_name}}" required>
                                             <div class="invalid-feedback">
-                                                Please enter your first name
+                                                Bitte geben Sie Ihren Vornamen ein
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-6">
                                         <div class="form-group">
-                                            <label for="lastName">Last name</label>
+                                            <label for="lastName">Nachname</label>
                                             <input type="text" class="form-control" name="lastName" value="{{$user->last_name}}" placeholder="Enter last name"
                                                     id="lastName" required>
                                             <div class="invalid-feedback">
-                                                Please enter your last name
+                                                Bitte geben Sie ihren Nachnamen ein
                                             </div>
                                         </div>
                                     </div>
@@ -138,7 +141,7 @@
                                             <label for="email">Email</label>
                                             <input type="email" class="form-control" name="email" value="{{$user->email}}" id="email" aria-describedby="emailHelp" placeholder="Enter email" required>
                                             <div class="invalid-feedback">
-                                                Please enter email address
+                                                Bitte E-Mail-Adresse eingeben
                                             </div>
                                         </div>
                                     </div>
@@ -146,15 +149,15 @@
                                 <div class="row my-2">
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <label for="gender">Gender</label>
+                                            <label for="gender">Geschlecht</label>
                                             <select class="form-control" value="{{$user->gender}}" name="gender" id="Gender" required>
-                                                <option selected disabled value="">Choose...</option>
-                                                <option value="MALE">Male</option>
-                                                <option value="FEMALE">Female</option>
-                                                <option value="OTHER">Others</option>
+                                                <option selected disabled value="">Wählen...</option>
+                                                <option value="MALE">Männlich</option>
+                                                <option value="FEMALE">Weiblich</option>
+                                                <option value="OTHER">Andere</option>
                                               </select>
                                             <div class="invalid-feedback">
-                                                Please select gender
+                                                Bitte wähle ein Geschlecht
                                             </div>
                                         </div>
                                     </div>
@@ -163,11 +166,11 @@
                                 <div class="row my-2">
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <label for="address">Address</label>
+                                            <label for="address">Adresse</label>
                                             <input type="text" value="{{$user->address}}" class="form-control" name="address" placeholder="Enter address"
                                                     id="address" required>
                                             <div class="invalid-feedback">
-                                                Please enter address
+                                                Bitte Adresse eingeben
                                             </div>
                                         </div>
                                     </div>
@@ -175,11 +178,11 @@
                                 <div class="row my-2">
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <label for="phone">Contact number</label>
+                                            <label for="phone">Kontakt Nummer</label>
                                             <input type="text" value="{{$user->phone}}" class="form-control" name="phone" placeholder="Enter phone number"
                                                     id="phone" required>
                                             <div class="invalid-feedback">
-                                                Please enter contact number
+                                                Bitte geben Sie die Kontaktnummer ein
                                             </div>
                                         </div>
                                     </div>

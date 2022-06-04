@@ -216,36 +216,36 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" aria-current="page" href="/admin">Home</a>
+                        <a class="nav-link mx-1 p-2" aria-current="page" href="/admin">Heim</a>
                     </li>
 
                     @if(session()->has('user_id'))
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="/admin/addslot">Add Slot</a>
+                        <a class="nav-link mx-1 p-2" href="/admin/addslot">Steckplatz hinzufügen</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active mx-1 p-2" href="/admin/manage-schedule">Manage Schedule</a>
+                        <a class="nav-link active mx-1 p-2" href="/admin/manage-schedule">Zeitplan verwalten</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="/admin/history">History</a>
+                        <a class="nav-link mx-1 p-2" href="/admin/history">Geschichte</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="/logout">Logout</a>
+                        <a class="nav-link mx-1 p-2" href="/logout">Ausloggen</a>
                     </li>
 
                     @else
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="/">About Us</a>
+                        <a class="nav-link mx-1 p-2" href="/">Über uns</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="/">Contact Us</a>
+                        <a class="nav-link mx-1 p-2" href="/">Kontaktiere uns</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="/login">Login</a>
+                        <a class="nav-link mx-1 p-2" href="/login">Anmeldung</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="/register">Register</a>
+                        <a class="nav-link mx-1 p-2" href="/register">Registrieren</a>
                     </li>
 
                     @endif
@@ -260,20 +260,20 @@
             <div class="col-8 offset-1">
                 @if(count($appointments) < 1)
                 @else
-                <h2 class="text-dark text-left">Appointment list</h2>
+                <h2 class="text-dark text-left">Terminliste</h2>
                 @endif
             </div>
             <div class="col-2">
-                <a class="text-right text-dark" href="/admin/manage-schedule"><i class="fa fa-light fa-arrow-up"></i><span>Change date</span></a>
+                <a class="text-right text-dark" href="/admin/manage-schedule"><i class="fa fa-light fa-arrow-up"></i><span>Datum ändern</span></a>
             </div>
             <div class="col-2">
-                <a class="text-right text-dark" href="/admin/addslot"><i class="fa fa-light fa-arrow-up"></i><span>Add Slot</span></a>
+                <a class="text-right text-dark" href="/admin/addslot"><i class="fa fa-light fa-arrow-up"></i><span>Steckplatz hinzufügen</span></a>
             </div>
             <div class="col-10 offset-1">
                 <div class="row">
                     @if(count($appointments) < 1)
                         <div>
-                            <h1 class="text-light text-center mt-5"><span>No slot found</span> <i class="fa fa-frown"></i></h1>
+                            <h1 class="text-light text-center mt-5"><span>Kein Steckplatz gefunden</span> <i class="fa fa-frown"></i></h1>
                         </div>
                     @else
                         @foreach ($appointments as $appointment)
@@ -283,7 +283,7 @@
                                         <h4 class="appointment-time">{{ \Carbon\Carbon::parse($appointment->start_time)->format('h:i A')}}- {{ \Carbon\Carbon::parse($appointment->end_time)->format('h:i A') }}</h4>
                                     </div>
                                     <div class="col-4 py-4 ">
-                                        <a href="/admin/reservation/{{$appointment->id}}" type="button" class="btn btn-sm btn-success float-right">See reservations</a>
+                                        <a href="/admin/reservation/{{$appointment->id}}" type="button" class="btn btn-sm btn-success float-right">Siehe Reservierungen</a>
                                     </div>
                                 </div>
                             </div>

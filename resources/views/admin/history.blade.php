@@ -216,37 +216,37 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link  mx-1 p-2" aria-current="page" href="/admin">Home</a>
+                        <a class="nav-link  mx-1 p-2" aria-current="page" href="/admin">Heim</a>
                     </li>
 
                     @if(session()->has('user_id'))
 
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="/admin/addslot">Add Slot</a>
+                        <a class="nav-link mx-1 p-2" href="/admin/addslot">Steckplatz hinzufügen</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="/admin/manage-schedule">Manage Schedule</a>
+                        <a class="nav-link mx-1 p-2" href="/admin/manage-schedule">Zeitplan verwalten</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active mx-1 p-2" href="/admin/history">History</a>
+                        <a class="nav-link active mx-1 p-2" href="/admin/history">Geschichte</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="/logout">Logout</a>
+                        <a class="nav-link mx-1 p-2" href="/logout">Ausloggen</a>
                     </li>
 
                     @else
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="/">About Us</a>
+                        <a class="nav-link mx-1 p-2" href="/">Über uns</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="/">Contact Us</a>
+                        <a class="nav-link mx-1 p-2" href="/">Kontaktiere uns</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="/login">Login</a>
+                        <a class="nav-link mx-1 p-2" href="/login">Anmeldung</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-1 p-2" href="/register">Register</a>
+                        <a class="nav-link mx-1 p-2" href="/register">Registrieren</a>
                     </li>
 
                     @endif
@@ -261,14 +261,14 @@
             <div class="col-8 offset-1">
                 @if(count($users) < 1)
                 @else
-                <h2 class="text-dark text-left">History</h2>
+                <h2 class="text-dark text-left">Geschichte</h2>
                 @endif
             </div>
             <div class="col-10 offset-1">
                 <div class="row">
                     @if(count($users) < 1)
                         <div>
-                            <h1 class="text-light text-center mt-5"><span>No reservation found</span> <i class="fa fa-frown"></i></h1>
+                            <h1 class="text-light text-center mt-5"><span>Keine Reservierung gefunden</span> <i class="fa fa-frown"></i></h1>
                         </div>
                     @else
                         @foreach ($users as $user)
