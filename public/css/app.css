@@ -32,7 +32,7 @@ body {
 }
 
 .navbar-toggler {
-    color: #32B9B3 !important;
+    color: #1c1034f8 !important;
 }
 
 .navbar-brand {
@@ -45,11 +45,11 @@ margin-right: 7% !important;
 }
 .title {
     font-size: larger;
-    color: #32B9B3 !important;;
+    color: #1c1034f8 !important;;
 }
 
 .active {
-    background-color: #32B9B3 !important;
+    background-color: #1c1034f8 !important;
     color: #fff !important;
     border-radius: 4%;
 }
@@ -81,4 +81,7 @@ footer {
 
 .appointment-time{
     font-size: medium;
+}
+.text-not-found {
+    color: #1c1034f8;
 }

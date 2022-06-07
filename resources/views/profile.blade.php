@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.84.0">
-    <title>Heim2 – Well Time Private SPA</title>
+    <title>Heim – Well Time Private SPA</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/navbar-fixed/">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -58,7 +58,7 @@
         <div class="container-fluid">
             <a class="navbar-brand pl-md-3" href="#">
                 <img src="/asset/logo2.png" alt="..." height="100">&nbsp;
-                <span class="title">Heim2 – Well Time Private SPA</span>
+                <span class="title">Heim – Well Time Private SPA</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
