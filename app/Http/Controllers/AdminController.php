@@ -61,6 +61,12 @@ class AdminController extends Controller
         return view('admin.reservation', ['users' => $users, 'r_id' => $id]);
     }
 
+    public function deleteReservations(Request $request, $id)
+    {
+        Appointment::find($id)->delete();
+        return $this->home();
+    }
+
     public function confirmBooking($reservationId, $id)
     {
         $booking = Booking::where('appointment_id', $reservationId)->where('user_id', $id)->first();

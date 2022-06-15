@@ -34,10 +34,12 @@ Route::middleware(['isAdmin'])->group(function () {
     Route::post('/admin/manage-schedule', [AdminController::class, 'getAppointment']);
     Route::get('/admin/history', [AdminController::class, 'history']);
     Route::get('/admin/reservation/{id}', [AdminController::class, 'showReservations']);
+    Route::get('/admin/reservation/{id}/delete', [AdminController::class, 'deleteReservations']);
 
     Route::get('/admin/addslot', [AdminController::class, 'addslot']);
     Route::post('/admin/addslot', [AdminController::class, 'postslot']);
     Route::get('/admin/reservation/{reservationId}/confirm/{userId}', [AdminController::class, 'confirmBooking']);
+
 });
 
 

@@ -279,11 +279,13 @@
                         @foreach ($appointments as $appointment)
                             <div class="col-12 col-md-12">
                                 <div class="row my-2 bg-light rounded mx-1">
-                                    <div class="col-8 py-4">
+                                    <div class="col-5 py-4">
                                         <h4 class="appointment-time">{{ \Carbon\Carbon::parse($appointment->start_time)->format('h:i A')}}- {{ \Carbon\Carbon::parse($appointment->end_time)->format('h:i A') }}</h4>
                                     </div>
-                                    <div class="col-4 py-4 ">
-                                        <a href="/admin/reservation/{{$appointment->id}}" type="button" class="btn btn-sm btn-success float-right">Siehe Reservierungen</a>
+                                    <div class="col-7 py-4 ">
+                                        <a href="/admin/reservation/{{$appointment->id}}" type="button" class="btn btn-sm btn-success float-right mr-1">Siehe Reservierungen</a>
+
+                                        <a href="/admin/reservation/{{$appointment->id}}/delete" type="button" class="btn btn-sm btn-success float-right mx-2">Löschen</a>
                                     </div>
                                 </div>
                             </div>
